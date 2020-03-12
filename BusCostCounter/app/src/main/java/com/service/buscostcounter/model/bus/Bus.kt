@@ -5,7 +5,9 @@ open abstract class Bus (var distance : Int = 0, var stationCount : Int = 0){
     protected abstract fun getFixedDistance() : Int
     protected abstract fun getHundredKmFuelCost() : Int
     protected abstract fun getChargeTime() : Int
-    protected abstract fun airPolutionVolume() : Int
+    protected abstract fun airPollutionVolume() : Int
+
+    var ticketPrice :Int ?= 0
 
     protected fun getOneStationCost() : Float{
        return (getFixedDistance() * 0.8 / 100).toFloat()

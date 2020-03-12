@@ -1,25 +1,9 @@
 package com.service.buscostcounter.model.result
 
-class Cleanest : BaseBustCosts(){
-    override var fuelConsumption: Int
-        get() = fuelConsumption
-        set(value) {
-            fuelConsumption = value
-        }
-    override var fuelCost: Float
-        get() = fuelCost
-        set(value) {
-            fuelCost = value
-        }
-    override var ticketPrice: Int
-        get() = ticketPrice
-        set(value) {
-            ticketPrice = value
-        }
-    override var airPollution: Int
-        get() = airPollution
-        set(value) {
-            airPollution = value
-        }
+import com.service.buscostcounter.model.bus.Bus
+
+class Cleanest{
+
+    var bus : Bus ?= null
 
 }

@@ -16,7 +16,7 @@
             type="com.service.buscostcounter.model.result.Fastest" />
 
         <variable
-            name="favourable"
+            name="favorable"
             type="com.service.buscostcounter.model.result.Favorable" />
 
         <variable
@@ -101,7 +101,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(fastest.fuelConsumption)}" />
+                    android:text="@{String.valueOf(fastest.bus.totalFuelCost)}" />
             </LinearLayout>
 
             <LinearLayout
@@ -116,7 +116,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(fastest.fuelCost)}" />
+                    android:text="@{String.valueOf(fastest.bus.totalCostByFuel)}" />
             </LinearLayout>
 
             <LinearLayout
@@ -131,7 +131,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(fastest.ticketPrice)}" />
+                    android:text="@{String.valueOf(fastest.bus.ticketPrice)}" />
             </LinearLayout>
 
             <LinearLayout
@@ -146,7 +146,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(fastest.airPollution)}" />
+                    android:text="@{String.valueOf(fastest.bus.totalAirPollutionVolume)}" />
             </LinearLayout>
 
             <TextView
@@ -165,7 +165,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(favourable.fuelConsumption)}" />
+                    android:text="@{String.valueOf(favorable.bus.totalFuelCost)}" />
             </LinearLayout>
 
             <LinearLayout
@@ -180,7 +180,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(favourable.fuelCost)}" />
+                    android:text="@{String.valueOf(favorable.bus.totalCostByFuel)}" />
             </LinearLayout>
 
             <LinearLayout
@@ -195,7 +195,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(favourable.ticketPrice)}" />
+                    android:text="@{String.valueOf(favorable.bus.ticketPrice)}" />
             </LinearLayout>
 
             <LinearLayout
@@ -210,7 +210,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(favourable.airPollution)}" />
+                    android:text="@{String.valueOf(favorable.bus.totalAirPollutionVolume)}" />
             </LinearLayout>
 
             <TextView
@@ -230,7 +230,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(cleanest.fuelConsumption)}" />
+                    android:text="@{String.valueOf(cleanest.bus.totalCostByFuel)}" />
             </LinearLayout>
 
             <LinearLayout
@@ -245,7 +245,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(cleanest.fuelCost)}" />
+                    android:text="@{String.valueOf(cleanest.bus.totalFuelCost)}" />
             </LinearLayout>
 
             <LinearLayout
@@ -260,7 +260,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(cleanest.ticketPrice)}" />
+                    android:text="@{String.valueOf(cleanest.bus.ticketPrice)}" />
             </LinearLayout>
 
             <LinearLayout
@@ -275,7 +275,7 @@
                 <TextView
                     style="@style/wrap_wrap"
                     android:layout_marginStart="6dp"
-                    android:text="@{String.valueOf(cleanest.airPollution)}" />
+                    android:text="@{String.valueOf(cleanest.bus.totalAirPollutionVolume)}" />
             </LinearLayout>
         </LinearLayout>
 

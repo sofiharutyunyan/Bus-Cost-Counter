@@ -15,7 +15,7 @@ class LiquidGas(var liqDistance : Int = 0, var liqStationCount : Int = 0)
         return 25
     }
 
-    override fun airPolutionVolume(): Int {
+    override fun airPollutionVolume(): Int {
         return 290
     }
 }

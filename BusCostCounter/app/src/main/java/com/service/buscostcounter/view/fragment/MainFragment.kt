@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.service.buscostcounter.R
 import com.service.buscostcounter.databinding.FragmentMainBinding
+import com.service.buscostcounter.model.bus.BusTypes
 import com.service.buscostcounter.model.bus.Electrical
 import com.service.buscostcounter.model.bus.LiquidGas
 import com.service.buscostcounter.model.bus.Petrol
@@ -55,11 +56,13 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
         vm.spentTimeArr.add(petrolBus.getChargeTotalTime())
         vm.spentTimeArr.add(liquidGasBus.getChargeTotalTime())
 
-        vm.fastest.fuelCost = vm.getFuelCost(electricalBus)
+        when (vm.getTheTypeOfFavourable()){
+            BusTypes.ELECTRICAL -> vm.fastest.bus = electricalBus
+            BusTypes.PETROL -> vm.fastest.bus = petrolBus
+            BusTypes.LIQUID_GAS -> vm.fastest.bus = liquidGasBus
+        }
 
-
-        binding.favourable = vm.favorable
-        binding.busTypes = vm.getTheTypeOfFavourable()
+        binding.fastest = vm.fastest
     }
 
     private fun countFavorable() {
@@ -75,8 +78,7 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
         vm.fuelCostArr.add(petrolBus.getTotalFuelCost())
         vm.fuelCostArr.add(liquidGasBus.getTotalFuelCost())
 
-        vm.favorable.fuelCost = vm.getFuelCost(electricalBus)
-        binding.favourable = vm.favorable
+        binding.favorable = vm.favorable
         binding.busTypes = vm.getTheTypeOfFavourable()
     }
 
@@ -93,7 +95,7 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
         vm.airPollutionVolumeArr.add(petrolBus.getTotalAirPollutionVolume())
         vm.airPollutionVolumeArr.add(liquidGasBus.getTotalAirPollutionVolume())
 
-//        vm.cleanest.airPollution = vm.get(electricalBus)
+        binding.cleanest = vm.cleanest
     }
 
 

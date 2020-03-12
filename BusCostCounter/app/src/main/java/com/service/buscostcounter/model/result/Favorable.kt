@@ -1,13 +1,9 @@
 package com.service.buscostcounter.model.result
 
-class Favorable : BaseBustCosts() {
+import com.service.buscostcounter.model.bus.Bus
 
-    override var fuelConsumption: Int = 0
+class Favorable {
 
-    override var fuelCost: Float = 0.toFloat()
-
-    override var ticketPrice: Int = 0
-
-    override var airPollution: Int = 0
+    var bus : Bus?= null
 
 }
