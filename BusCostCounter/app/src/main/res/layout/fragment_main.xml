@@ -85,9 +85,20 @@
                 android:text="@string/check"
                 android:textColor="@android:color/white" />
 
+        <LinearLayout
+            style="@style/wrap_wrap"
+            android:orientation="horizontal">
+
             <TextView
                 style="@style/TitleCustomStyle"
                 android:text="@string/the_fastest_way" />
+
+            <TextView
+                android:id="@+id/txtTheFastestWay"
+                android:layout_marginStart="6dp"
+                style="@style/TitleCustomStyle" />
+
+        </LinearLayout>
 
             <LinearLayout
                 style="@style/wrap_wrap"
@@ -149,9 +160,20 @@
                     android:text="@{String.valueOf(fastest.bus.totalAirPollutionVolume)}" />
             </LinearLayout>
 
-            <TextView
-                style="@style/TitleCustomStyle"
-                android:text="@string/the_most_favorable_way" />
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TitleCustomStyle"
+                    android:text="@string/the_most_favorable_way" />
+
+                <TextView
+                    android:id="@+id/txtTheFavorableWay"
+                    android:layout_marginStart="6dp"
+                    style="@style/TitleCustomStyle" />
+
+            </LinearLayout>
 
             <LinearLayout
                 style="@style/wrap_wrap"
@@ -213,10 +235,21 @@
                     android:text="@{String.valueOf(favorable.bus.totalAirPollutionVolume)}" />
             </LinearLayout>
 
-            <TextView
-                style="@style/TitleCustomStyle"
-                android:text="@string/the_cleanest_way" />
 
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TitleCustomStyle"
+                    android:text="@string/the_cleanest_way" />
+
+                <TextView
+                    android:id="@+id/txtCleanestWay"
+                    android:layout_marginStart="6dp"
+                    style="@style/TitleCustomStyle" />
+
+            </LinearLayout>
 
             <LinearLayout
                 style="@style/wrap_wrap"

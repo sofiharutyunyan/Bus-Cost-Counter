@@ -1,14 +1,14 @@
 package com.service.buscostcounter.model.bus
 
-class LiquidGas(var liqDistance : Int = 0, var liqStationCount : Int = 0)
-    : Bus(liqDistance, liqStationCount){
+class LiquidGas(var liqDistance : Int = 0, var liqStationCount : Int = 0, var liqAvaregeCountOfPssengers : Int = 0, var liqOilCost : Int = 0)
+    : Bus(liqDistance, liqStationCount, liqAvaregeCountOfPssengers, liqOilCost){
 
     override fun getFixedDistance(): Int {
         return 1000
     }
 
-    override fun getHundredKmFuelCost(): Int {
-        return 18
+    override fun getHundredKmFuelCost(): Float {
+        return 18.toFloat()
     }
 
     override fun getChargeTime(): Int {

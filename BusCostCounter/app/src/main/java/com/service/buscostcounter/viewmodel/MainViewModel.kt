@@ -35,7 +35,41 @@ class MainViewModel : BaseViewModel(){
         }
     }
 
+    fun getTheTypeOfCleanest() : BusTypes {
+        val index = airPollutionVolumeArr.indexOf(airPollutionVolumeArr.min())
+        return when (index) {
+            0 -> {
+                BusTypes.ELECTRICAL
+            }
+            1 -> {
+                BusTypes.PETROL
+            }
+            else -> {
+                BusTypes.LIQUID_GAS
+            }
+        }
+    }
+
+    fun getTheTypeOfFastest() : BusTypes {
+        val index = spentTimeArr.indexOf(spentTimeArr.min())
+        return when (index) {
+            0 -> {
+                BusTypes.ELECTRICAL
+            }
+            1 -> {
+                BusTypes.PETROL
+            }
+            else -> {
+                BusTypes.LIQUID_GAS
+            }
+        }
+    }
+
     fun getFuelCost(bus: Bus) : Float{
         return bus.getTotalFuelCost()
+    }
+
+    fun getTicketPrice(bus : Bus) : Int{
+        return bus.getTicketPrice()
     }
 }
