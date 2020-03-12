@@ -1,5 +1,6 @@
 package com.service.buscostcounter.viewmodel
 
+import com.service.buscostcounter.model.bus.Bus
 import com.service.buscostcounter.model.bus.BusTypes
 import com.service.buscostcounter.model.bus.Electrical
 import com.service.buscostcounter.model.result.Cleanest
@@ -16,13 +17,11 @@ class MainViewModel : BaseViewModel(){
     var cleanest : Cleanest = Cleanest()
 
     val fuelCostArr = arrayListOf<Float>()
-
-    fun getTheFavourableWay() : Float? {
-        return fuelCostArr.min()
-    }
+    val airPollutionVolumeArr = arrayListOf<Int>()
+    val spentTimeArr = arrayListOf<Int>()
 
     fun getTheTypeOfFavourable() : BusTypes {
-        val index = fuelCostArr.indexOf(getTheFavourableWay())
+        val index = fuelCostArr.indexOf(fuelCostArr.min())
         return when (index) {
             0 -> {
                 BusTypes.ELECTRICAL
@@ -34,5 +33,9 @@ class MainViewModel : BaseViewModel(){
                 BusTypes.LIQUID_GAS
             }
         }
+    }
+
+    fun getFuelCost(bus: Bus) : Float{
+        return bus.getTotalFuelCost()
     }
 }

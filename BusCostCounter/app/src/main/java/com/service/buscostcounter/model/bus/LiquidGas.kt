@@ -14,4 +14,8 @@ class LiquidGas(var liqDistance : Int = 0, var liqStationCount : Int = 0)
     override fun getChargeTime(): Int {
         return 25
     }
+
+    override fun airPolutionVolume(): Int {
+        return 290
+    }
 }

@@ -15,4 +15,8 @@ class Electrical(var elDistance : Int = 0, var elStationCount : Int = 0)
         return 40
     }
 
+    override fun airPolutionVolume(): Int {
+        return 0
+    }
+
 }

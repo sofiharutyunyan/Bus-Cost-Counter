@@ -15,4 +15,8 @@ class Petrol(var petDistance : Int = 0, var petStationCount : Int = 0)
         return 10
     }
 
+    override fun airPolutionVolume(): Int {
+        return 380
+    }
+
 }

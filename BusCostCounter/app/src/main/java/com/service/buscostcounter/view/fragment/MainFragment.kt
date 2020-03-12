@@ -44,10 +44,6 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
     }
 
     private fun countTheFastest() {
-
-    }
-
-    private fun countFavorable() {
         val distance: Int = Integer.valueOf(binding.edtDistance.text.toString())
         val stationCount: Int = Integer.valueOf(binding.edtStationCount.text.toString())
 
@@ -55,21 +51,50 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
         val petrolBus = Petrol(distance, stationCount)
         val liquidGasBus = LiquidGas(distance, stationCount)
 
-        var elCost = electricalBus.getTotalFuelCost()
-        var petCost = petrolBus.getTotalFuelCost()
-        var liqCost = liquidGasBus.getTotalFuelCost()
+        vm.spentTimeArr.add(electricalBus.getChargeTotalTime())
+        vm.spentTimeArr.add(petrolBus.getChargeTotalTime())
+        vm.spentTimeArr.add(liquidGasBus.getChargeTotalTime())
 
-        vm.fuelCostArr.add(elCost);
-        vm.fuelCostArr.add(petCost);
-        vm.fuelCostArr.add(liqCost);
+        vm.fastest.fuelCost = vm.getFuelCost(electricalBus)
 
-        vm.favorable.fuelCost = vm.getTheFavourableWay()!!
+
+        binding.favourable = vm.favorable
+        binding.busTypes = vm.getTheTypeOfFavourable()
+    }
+
+    private fun countFavorable() {
+
+        val distance: Int = Integer.valueOf(binding.edtDistance.text.toString())
+        val stationCount: Int = Integer.valueOf(binding.edtStationCount.text.toString())
+
+        val electricalBus = Electrical(distance, stationCount)
+        val petrolBus = Petrol(distance, stationCount)
+        val liquidGasBus = LiquidGas(distance, stationCount)
+
+        vm.fuelCostArr.add(electricalBus.getTotalFuelCost())
+        vm.fuelCostArr.add(petrolBus.getTotalFuelCost())
+        vm.fuelCostArr.add(liquidGasBus.getTotalFuelCost())
+
+        vm.favorable.fuelCost = vm.getFuelCost(electricalBus)
         binding.favourable = vm.favorable
         binding.busTypes = vm.getTheTypeOfFavourable()
     }
 
     private fun countCleanest() {
 
+        val distance: Int = Integer.valueOf(binding.edtDistance.text.toString())
+        val stationCount: Int = Integer.valueOf(binding.edtStationCount.text.toString())
+
+        val electricalBus = Electrical(distance, stationCount)
+        val petrolBus = Petrol(distance, stationCount)
+        val liquidGasBus = LiquidGas(distance, stationCount)
+
+        vm.airPollutionVolumeArr.add(electricalBus.getTotalAirPollutionVolume())
+        vm.airPollutionVolumeArr.add(petrolBus.getTotalAirPollutionVolume())
+        vm.airPollutionVolumeArr.add(liquidGasBus.getTotalAirPollutionVolume())
+
+//        vm.cleanest.airPollution = vm.get(electricalBus)
     }
+
 
 }
