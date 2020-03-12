@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.service.buscostcounter.view.fragment.MainFragment" />
+
+        <variable
+            name="busTypes"
+            type="com.service.buscostcounter.model.bus.BusTypes" />
+
+        <variable
+            name="fastest"
+            type="com.service.buscostcounter.model.result.Fastest" />
+
+        <variable
+            name="favourable"
+            type="com.service.buscostcounter.model.result.Favorable" />
+
+        <variable
+            name="cleanest"
+            type="com.service.buscostcounter.model.result.Cleanest" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/counter_page_wall_padding">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDistance"
+                style="@style/InputLayoutCustomStyle"
+                android:layout_marginTop="0dp"
+                android:hint="@string/distance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtDistance"
+                    style="@style/InputEditTextCustomStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilStationCount"
+                style="@style/InputLayoutCustomStyle"
+                android:hint="@string/station_count">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtStationCount"
+                    style="@style/InputEditTextCustomStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPassengerAverageCount"
+                style="@style/InputLayoutCustomStyle"
+                android:hint="@string/average_count_of_passengers">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPassengerAverageCount"
+                    style="@style/InputEditTextCustomStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOilCost"
+                style="@style/InputLayoutCustomStyle"
+                android:hint="@string/oil_cost">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtOilCost"
+                    style="@style/InputEditTextCustomStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                style="@style/wrap_wrap"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_between_edittexts"
+                android:background="@color/colorPrimary"
+                android:onClick="@{() -> fragment.onCheckClicked()}"
+                android:text="@string/check"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                style="@style/TitleCustomStyle"
+                android:text="@string/the_fastest_way" />
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/fuel_consumption"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(fastest.fuelConsumption)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/fuel_cost"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(fastest.fuelCost)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/ticket_price"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(fastest.ticketPrice)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/air_pollution"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(fastest.airPollution)}" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/TitleCustomStyle"
+                android:text="@string/the_most_favorable_way" />
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/fuel_consumption"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(favourable.fuelConsumption)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/fuel_cost"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(favourable.fuelCost)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/ticket_price"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(favourable.ticketPrice)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/air_pollution"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(favourable.airPollution)}" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/TitleCustomStyle"
+                android:text="@string/the_cleanest_way" />
+
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/fuel_consumption"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(cleanest.fuelConsumption)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/fuel_cost"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(cleanest.fuelCost)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/ticket_price"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(cleanest.ticketPrice)}" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:text="@string/air_pollution"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:layout_marginStart="6dp"
+                    android:text="@{String.valueOf(cleanest.airPollution)}" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

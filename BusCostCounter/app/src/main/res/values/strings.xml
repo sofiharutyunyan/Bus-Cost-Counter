@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Bus Cost Counter</string>
+    <string name="distance">Distance</string>
+    <string name="station_count">Station count</string>
+    <string name="average_count_of_passengers">Average count of passengers</string>
+    <string name="oil_cost">Oil cost</string>
+    <string name="check">Check</string>
+    <string name="the_fastest_way">The fastest way</string>
+    <string name="the_most_favorable_way">The most favorable way</string>
+    <string name="the_cleanest_way">The cleanest way</string>
+    <string name="fuel_consumption">Fuel consumption:</string>
+    <string name="air_pollution">Air Pollution:</string>
+    <string name="ticket_price">Ticket Price:</string>
+    <string name="fuel_cost">Fuel cost:</string>
+    <string name="error_msg_empty_field">Field must not be empty</string>
+</resources>
