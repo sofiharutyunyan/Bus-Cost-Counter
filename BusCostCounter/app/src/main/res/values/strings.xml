@@ -5,9 +5,9 @@
     <string name="average_count_of_passengers">Average count of passengers</string>
     <string name="oil_cost">Oil cost</string>
     <string name="check">Check</string>
-    <string name="the_fastest_way">The fastest way</string>
-    <string name="the_most_favorable_way">The most favorable way</string>
-    <string name="the_cleanest_way">The cleanest way</string>
+    <string name="the_fastest_way">The Fastest way:</string>
+    <string name="the_most_favorable_way">The Most Favorable way:</string>
+    <string name="the_cleanest_way">The Cleanest way:</string>
     <string name="fuel_consumption">Fuel consumption:</string>
     <string name="air_pollution">Air Pollution:</string>
     <string name="ticket_price">Ticket Price:</string>
