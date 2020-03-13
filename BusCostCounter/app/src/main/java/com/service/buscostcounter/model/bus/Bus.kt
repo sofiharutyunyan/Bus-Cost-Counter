@@ -36,6 +36,10 @@ abstract class Bus(
         return getTotalCostByFuel() + getTotalCostByStation()
     }
 
+    fun countTheFavorableCost() : Float{
+        return getTotalFuelCost() * oilPrise / avaregeCountOfPssengers
+    }
+
     fun getTotalAirPollutionVolume(): Int {
         return distance * airPollutionVolume()
     }
