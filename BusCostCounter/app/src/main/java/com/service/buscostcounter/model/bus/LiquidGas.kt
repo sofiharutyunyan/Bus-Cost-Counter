@@ -1,7 +1,7 @@
 package com.service.buscostcounter.model.bus
 
-class LiquidGas(var liqDistance : Int = 0, var liqStationCount : Int = 0, var liqAvaregeCountOfPssengers : Int = 0, var liqOilCost : Int = 0)
-    : Bus(liqDistance, liqStationCount, liqAvaregeCountOfPssengers, liqOilCost){
+class LiquidGas(var liqDistance : Int = 0, var liqStationCount : Int = 0, var liqAvaregeCountOfPssengers : Int = 0, var liqOilPrice : Int = 0)
+    : Bus(liqDistance, liqStationCount, liqAvaregeCountOfPssengers, liqOilPrice){
 
     override fun getFixedDistance(): Int {
         return 1000
