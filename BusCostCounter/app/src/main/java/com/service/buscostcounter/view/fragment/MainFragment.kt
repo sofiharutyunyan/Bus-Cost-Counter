@@ -11,6 +11,7 @@ import com.service.buscostcounter.model.bus.LiquidGas
 import com.service.buscostcounter.model.bus.Petrol
 import com.service.buscostcounter.model.result.BaseResult
 import com.service.buscostcounter.utils.InputTextValidation
+import com.service.buscostcounter.utils.SystemCommandUtils
 import com.service.buscostcounter.view.fragment.base.BaseFragmentWithViewModel
 import com.service.buscostcounter.viewmodel.MainViewModel
 
@@ -30,6 +31,7 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
     }
 
     fun onCheckClicked() {
+        SystemCommandUtils.hideSoftKeyBoard(context, binding.root)
         if (fieldsAreValid()) {
             countTheFastest()
             countFavorable()
