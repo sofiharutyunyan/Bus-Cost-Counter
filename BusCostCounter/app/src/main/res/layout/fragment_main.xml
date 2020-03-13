@@ -85,20 +85,20 @@
                 android:text="@string/check"
                 android:textColor="@android:color/white" />
 
-        <LinearLayout
-            style="@style/wrap_wrap"
-            android:orientation="horizontal">
+            <LinearLayout
+                style="@style/wrap_wrap"
+                android:orientation="horizontal">
 
-            <TextView
-                style="@style/TitleCustomStyle"
-                android:text="@string/the_fastest_way" />
+                <TextView
+                    style="@style/TitleCustomStyle"
+                    android:text="@string/the_fastest_way" />
 
-            <TextView
-                android:id="@+id/txtTheFastestWay"
-                android:layout_marginStart="6dp"
-                style="@style/TitleCustomStyle" />
+                <TextView
+                    android:id="@+id/txtTheFastestWay"
+                    style="@style/TitleCustomStyle"
+                    android:layout_marginStart="6dp" />
 
-        </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 style="@style/wrap_wrap"
@@ -170,8 +170,8 @@
 
                 <TextView
                     android:id="@+id/txtTheFavorableWay"
-                    android:layout_marginStart="6dp"
-                    style="@style/TitleCustomStyle" />
+                    style="@style/TitleCustomStyle"
+                    android:layout_marginStart="6dp" />
 
             </LinearLayout>
 
@@ -246,8 +246,8 @@
 
                 <TextView
                     android:id="@+id/txtCleanestWay"
-                    android:layout_marginStart="6dp"
-                    style="@style/TitleCustomStyle" />
+                    style="@style/TitleCustomStyle"
+                    android:layout_marginStart="6dp" />
 
             </LinearLayout>
 

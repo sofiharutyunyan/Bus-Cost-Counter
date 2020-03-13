@@ -5,7 +5,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProviders
 import com.service.buscostcounter.viewmodel.base.BaseViewModel
 
-open abstract class BaseFragmentWithViewModel<T : ViewDataBinding, U : BaseViewModel> :
+abstract class BaseFragmentWithViewModel<T : ViewDataBinding, U : BaseViewModel> :
     BaseFragment<T>() {
 
     protected lateinit var vm: U
