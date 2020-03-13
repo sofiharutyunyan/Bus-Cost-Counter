@@ -13,4 +13,7 @@
     <string name="ticket_price">Ticket Price:</string>
     <string name="fuel_cost">Fuel cost:</string>
     <string name="error_msg_empty_field">Field must not be empty</string>
+    <string name="electrical_bus">Electrical Bus</string>
+    <string name="petrol_bus">Petrol Bus</string>
+    <string name="liquid_gas_bus">Liquid gas Bus</string>
 </resources>

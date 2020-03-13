@@ -2,7 +2,7 @@ package com.service.buscostcounter.view.fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.IntegerRes
+import android.widget.TextView
 import com.service.buscostcounter.R
 import com.service.buscostcounter.databinding.FragmentMainBinding
 import com.service.buscostcounter.model.bus.BusTypes
@@ -25,7 +25,6 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.fragment = this
     }
 
@@ -38,109 +37,83 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
     }
 
     private fun fieldsAreValid(): Boolean {
-        return InputTextValidation.checkIsFieldNullOrEmpty(context, binding.edtDistance, binding.tilDistance)
-                && InputTextValidation.checkIsFieldNullOrEmpty(context, binding.edtStationCount, binding.tilStationCount)
-                && InputTextValidation.checkIsFieldNullOrEmpty(context, binding.edtPassengerAverageCount, binding.tilPassengerAverageCount)
-                && InputTextValidation.checkIsFieldNullOrEmpty(context, binding.edtOilCost, binding.tilOilCost)
+        return InputTextValidation.checkIsFieldNullOrEmpty(
+            context,
+            binding.edtDistance,
+            binding.tilDistance
+        )
+                && InputTextValidation.checkIsFieldNullOrEmpty(
+            context,
+            binding.edtStationCount,
+            binding.tilStationCount
+        )
+                && InputTextValidation.checkIsFieldNullOrEmpty(
+            context,
+            binding.edtPassengerAverageCount,
+            binding.tilPassengerAverageCount
+        )
+                && InputTextValidation.checkIsFieldNullOrEmpty(
+            context,
+            binding.edtOilCost,
+            binding.tilOilCost
+        )
 
     }
 
     private fun countTheFastest() {
-        val distance: Int = Integer.valueOf(binding.edtDistance.text.toString())
-        val stationCount: Int = Integer.valueOf(binding.edtStationCount.text.toString())
-        val averagePassengerCount = Integer.valueOf(binding.edtPassengerAverageCount.text.toString())
-        val oilCost = Integer.valueOf(binding.edtOilCost.text.toString())
 
-        val electricalBus = Electrical(distance, stationCount, averagePassengerCount, oilCost)
-        val petrolBus = Petrol(distance, stationCount, averagePassengerCount, oilCost)
-        val liquidGasBus = LiquidGas(distance, stationCount, averagePassengerCount, oilCost)
-
-        vm.spentTimeArr.add(electricalBus.getChargeTotalTime())
-        vm.spentTimeArr.add(petrolBus.getChargeTotalTime())
-        vm.spentTimeArr.add(liquidGasBus.getChargeTotalTime())
-
-        when (vm.getTheTypeOfFastest()){
-            BusTypes.ELECTRICAL -> {
-                vm.fastest.bus = electricalBus
-                binding.txtTheFastestWay.text = "Electrical"
-            }
-            BusTypes.PETROL -> {
-                vm.fastest.bus = petrolBus
-                binding.txtTheFastestWay.text = "Petrol"
-            }
-            BusTypes.LIQUID_GAS -> {
-                vm.fastest.bus = liquidGasBus
-                binding.txtTheFastestWay.text = "Liquid gas"
-            }
-        }
+        initDataForBuses()
+        vm.collectArrayForChargeTime()
+        getTargetBusType(vm.getTheTypeOfTargetWay(vm.spentTimeArr), binding.txtTheFastestWay)
 
         binding.fastest = vm.fastest
     }
 
-    private fun countFavorable() {
-
-        val distance: Int = Integer.valueOf(binding.edtDistance.text.toString())
-        val stationCount: Int = Integer.valueOf(binding.edtStationCount.text.toString())
-        val averagePassengerCount = Integer.valueOf(binding.edtPassengerAverageCount.text.toString())
-        val oilCost = Integer.valueOf(binding.edtOilCost.text.toString())
-
-        val electricalBus = Electrical(distance, stationCount, averagePassengerCount, oilCost)
-        val petrolBus = Petrol(distance, stationCount, averagePassengerCount, oilCost)
-        val liquidGasBus = LiquidGas(distance, stationCount, averagePassengerCount, oilCost)
-
-        vm.fuelCostArr.add(electricalBus.getTotalFuelCost())
-        vm.fuelCostArr.add(petrolBus.getTotalFuelCost())
-        vm.fuelCostArr.add(liquidGasBus.getTotalFuelCost())
-
-        when (vm.getTheTypeOfFavourable()){
+    private fun getTargetBusType(busType: BusTypes, txtNeededBusWay: TextView) {
+        when (busType) {
             BusTypes.ELECTRICAL -> {
-                vm.favorable.bus = electricalBus
-                binding.txtTheFavorableWay.text = "Electrical"
+                vm.fastest.bus = vm.electricalBus
+                txtNeededBusWay.text = getString(R.string.electrical_bus)
             }
             BusTypes.PETROL -> {
-                vm.favorable.bus = petrolBus
-
-                binding.txtTheFavorableWay.text = "Petrol"
+                vm.fastest.bus = vm.petrolBus
+                txtNeededBusWay.text = getString(R.string.petrol_bus)
             }
             BusTypes.LIQUID_GAS -> {
-                vm.favorable.bus = liquidGasBus
-                binding.txtTheFavorableWay.text = "Liquid gas"
+                vm.fastest.bus = vm.liquidGasBus
+                txtNeededBusWay.text = getString(R.string.liquid_gas_bus)
             }
         }
+    }
+
+    private fun initDataForBuses() {
+        val distance: Int = Integer.valueOf(binding.edtDistance.text.toString())
+        val stationCount: Int = Integer.valueOf(binding.edtStationCount.text.toString())
+        val averagePassengerCount =
+            Integer.valueOf(binding.edtPassengerAverageCount.text.toString())
+        val oilCost = Integer.valueOf(binding.edtOilCost.text.toString())
+
+        vm.electricalBus = Electrical(distance, stationCount, averagePassengerCount, oilCost)
+        vm.petrolBus = Petrol(distance, stationCount, averagePassengerCount, oilCost)
+        vm.liquidGasBus = LiquidGas(distance, stationCount, averagePassengerCount, oilCost)
+    }
+
+    private fun countFavorable() {
+
+        initDataForBuses()
+        vm.collectArrayForFuelCost()
+
+        getTargetBusType(vm.getTheTypeOfTargetWay(vm.fuelCostArr), binding.txtTheFavorableWay)
 
         binding.favorable = vm.favorable
-//        binding.busTypes = vm.getTheTypeOfFavourable()
     }
 
     private fun countCleanest() {
 
-        val distance: Int = Integer.valueOf(binding.edtDistance.text.toString())
-        val stationCount: Int = Integer.valueOf(binding.edtStationCount.text.toString())
-        val averagePassengerCount = Integer.valueOf(binding.edtPassengerAverageCount.text.toString())
-        val oilCost = Integer.valueOf(binding.edtOilCost.text.toString())
+        initDataForBuses()
+        vm.collectArrayAirPollution()
 
-        val electricalBus = Electrical(distance, stationCount, averagePassengerCount, oilCost)
-        val petrolBus = Petrol(distance, stationCount, averagePassengerCount, oilCost)
-        val liquidGasBus = LiquidGas(distance, stationCount, averagePassengerCount, oilCost)
-
-        vm.airPollutionVolumeArr.add(electricalBus.getTotalAirPollutionVolume())
-        vm.airPollutionVolumeArr.add(petrolBus.getTotalAirPollutionVolume())
-        vm.airPollutionVolumeArr.add(liquidGasBus.getTotalAirPollutionVolume())
-
-        when (vm.getTheTypeOfCleanest()){
-            BusTypes.ELECTRICAL -> {
-                vm.cleanest.bus = electricalBus
-                binding.txtCleanestWay.text = "Electrical"
-            }
-            BusTypes.PETROL -> {
-                vm.cleanest.bus = petrolBus
-                binding.txtCleanestWay.text = "Petrol"
-            }
-            BusTypes.LIQUID_GAS -> {
-                vm.cleanest.bus = liquidGasBus
-                binding.txtCleanestWay.text = "Liquid gas"
-            }
-        }
+        getTargetBusType(vm.getTheTypeOfTargetWay(vm.airPollutionVolumeArr), binding.txtCleanestWay)
 
         binding.cleanest = vm.cleanest
     }
