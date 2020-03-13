@@ -4,7 +4,7 @@ abstract class Bus(
     private var distance: Int = 0,
     private var stationCount: Int = 0,
     private var avaregeCountOfPssengers: Int = 0,
-    var oilCost: Int = 0
+    var oilPrise: Int = 0
 ) {
 
     protected abstract fun getFixedDistance(): Int
@@ -34,6 +34,10 @@ abstract class Bus(
 
     fun getTotalFuelCost(): Float {
         return getTotalCostByFuel() + getTotalCostByStation()
+    }
+
+    fun countTheFavorableCost() : Float{
+        return getTotalFuelCost() * oilPrise / avaregeCountOfPssengers
     }
 
     fun getTotalAirPollutionVolume(): Int {

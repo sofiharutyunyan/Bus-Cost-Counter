@@ -1,7 +1,7 @@
 package com.service.buscostcounter.model.bus
 
-class Electrical(var elDistance : Int = 0, var elStationCount : Int = 0, var elAvaregeCountOfPssengers : Int = 0, var elOilCost : Int = 0)
-    : Bus(elDistance, elStationCount, elAvaregeCountOfPssengers, elOilCost){
+class Electrical(distance : Int = 0, stationCount : Int = 0, avaregeCountOfPssengers : Int = 0, oilPrice : Int = 0)
+    : Bus(distance, stationCount, avaregeCountOfPssengers, oilPrice){
 
     override fun getFixedDistance(): Int {
         return 600

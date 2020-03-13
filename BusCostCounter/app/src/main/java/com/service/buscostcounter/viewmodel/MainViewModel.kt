@@ -31,9 +31,9 @@ class MainViewModel : BaseViewModel() {
     }
 
     fun collectArrayForFuelCost() {
-        fuelCostArr.add(electricalBus.getTotalFuelCost().toInt())
-        fuelCostArr.add(petrolBus.getTotalFuelCost().toInt())
-        fuelCostArr.add(liquidGasBus.getTotalFuelCost().toInt())
+        fuelCostArr.add(electricalBus.countTheFavorableCost().toInt())
+        fuelCostArr.add(petrolBus.countTheFavorableCost().toInt())
+        fuelCostArr.add(liquidGasBus.countTheFavorableCost().toInt())
     }
 
     fun collectArrayAirPollution() {

@@ -9,6 +9,7 @@ import com.service.buscostcounter.model.bus.BusTypes
 import com.service.buscostcounter.model.bus.Electrical
 import com.service.buscostcounter.model.bus.LiquidGas
 import com.service.buscostcounter.model.bus.Petrol
+import com.service.buscostcounter.model.result.BaseResult
 import com.service.buscostcounter.utils.InputTextValidation
 import com.service.buscostcounter.view.fragment.base.BaseFragmentWithViewModel
 import com.service.buscostcounter.viewmodel.MainViewModel
@@ -64,23 +65,23 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
 
         initDataForBuses()
         vm.collectArrayForChargeTime()
-        getTargetBusType(vm.getTheTypeOfTargetWay(vm.spentTimeArr), binding.txtTheFastestWay)
+        getTargetBusType(vm.getTheTypeOfTargetWay(vm.spentTimeArr), binding.txtTheFastestWay, vm.fastest)
 
         binding.fastest = vm.fastest
     }
 
-    private fun getTargetBusType(busType: BusTypes, txtNeededBusWay: TextView) {
+    private fun getTargetBusType(busType: BusTypes, txtNeededBusWay: TextView, baseResult: BaseResult) {
         when (busType) {
             BusTypes.ELECTRICAL -> {
-                vm.fastest.bus = vm.electricalBus
+                baseResult.bus = vm.electricalBus
                 txtNeededBusWay.text = getString(R.string.electrical_bus)
             }
             BusTypes.PETROL -> {
-                vm.fastest.bus = vm.petrolBus
+                baseResult.bus = vm.petrolBus
                 txtNeededBusWay.text = getString(R.string.petrol_bus)
             }
             BusTypes.LIQUID_GAS -> {
-                vm.fastest.bus = vm.liquidGasBus
+                baseResult.bus = vm.liquidGasBus
                 txtNeededBusWay.text = getString(R.string.liquid_gas_bus)
             }
         }
@@ -91,11 +92,11 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
         val stationCount: Int = Integer.valueOf(binding.edtStationCount.text.toString())
         val averagePassengerCount =
             Integer.valueOf(binding.edtPassengerAverageCount.text.toString())
-        val oilCost = Integer.valueOf(binding.edtOilCost.text.toString())
+        val oilPrice = Integer.valueOf(binding.edtOilCost.text.toString())
 
-        vm.electricalBus = Electrical(distance, stationCount, averagePassengerCount, oilCost)
-        vm.petrolBus = Petrol(distance, stationCount, averagePassengerCount, oilCost)
-        vm.liquidGasBus = LiquidGas(distance, stationCount, averagePassengerCount, oilCost)
+        vm.electricalBus = Electrical(distance, stationCount, averagePassengerCount, oilPrice)
+        vm.petrolBus = Petrol(distance, stationCount, averagePassengerCount, oilPrice)
+        vm.liquidGasBus = LiquidGas(distance, stationCount, averagePassengerCount, oilPrice)
     }
 
     private fun countFavorable() {
@@ -103,7 +104,7 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
         initDataForBuses()
         vm.collectArrayForFuelCost()
 
-        getTargetBusType(vm.getTheTypeOfTargetWay(vm.fuelCostArr), binding.txtTheFavorableWay)
+        getTargetBusType(vm.getTheTypeOfTargetWay(vm.fuelCostArr), binding.txtTheFavorableWay, vm.favorable)
 
         binding.favorable = vm.favorable
     }
@@ -113,7 +114,7 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
         initDataForBuses()
         vm.collectArrayAirPollution()
 
-        getTargetBusType(vm.getTheTypeOfTargetWay(vm.airPollutionVolumeArr), binding.txtCleanestWay)
+        getTargetBusType(vm.getTheTypeOfTargetWay(vm.airPollutionVolumeArr), binding.txtCleanestWay, vm.cleanest)
 
         binding.cleanest = vm.cleanest
     }
