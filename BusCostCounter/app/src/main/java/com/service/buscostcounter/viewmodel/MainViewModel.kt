@@ -43,8 +43,7 @@ class MainViewModel : BaseViewModel() {
     }
 
     fun getTheTypeOfTargetWay(costArr: ArrayList<Int>): BusTypes {
-        val index = costArr.indexOf(costArr.min())
-        return when (index) {
+        return when (costArr.indexOf(costArr.min())) {
             0 -> {
                 BusTypes.ELECTRICAL
             }

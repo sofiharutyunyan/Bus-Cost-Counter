@@ -65,12 +65,48 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
 
         initDataForBuses()
         vm.collectArrayForChargeTime()
-        getTargetBusType(vm.getTheTypeOfTargetWay(vm.spentTimeArr), binding.txtTheFastestWay, vm.fastest)
+        getTargetBusType(
+            vm.getTheTypeOfTargetWay(vm.spentTimeArr),
+            binding.txtTheFastestWay,
+            vm.fastest
+        )
 
         binding.fastest = vm.fastest
     }
 
-    private fun getTargetBusType(busType: BusTypes, txtNeededBusWay: TextView, baseResult: BaseResult) {
+    private fun countFavorable() {
+
+        initDataForBuses()
+        vm.collectArrayForFuelCost()
+
+        getTargetBusType(
+            vm.getTheTypeOfTargetWay(vm.fuelCostArr),
+            binding.txtTheFavorableWay,
+            vm.favorable
+        )
+
+        binding.favorable = vm.favorable
+    }
+
+    private fun countCleanest() {
+
+        initDataForBuses()
+        vm.collectArrayAirPollution()
+
+        getTargetBusType(
+            vm.getTheTypeOfTargetWay(vm.airPollutionVolumeArr),
+            binding.txtCleanestWay,
+            vm.cleanest
+        )
+
+        binding.cleanest = vm.cleanest
+    }
+
+    private fun getTargetBusType(
+        busType: BusTypes,
+        txtNeededBusWay: TextView,
+        baseResult: BaseResult
+    ) {
         when (busType) {
             BusTypes.ELECTRICAL -> {
                 baseResult.bus = vm.electricalBus
@@ -97,26 +133,6 @@ class MainFragment : BaseFragmentWithViewModel<FragmentMainBinding, MainViewMode
         vm.electricalBus = Electrical(distance, stationCount, averagePassengerCount, oilPrice)
         vm.petrolBus = Petrol(distance, stationCount, averagePassengerCount, oilPrice)
         vm.liquidGasBus = LiquidGas(distance, stationCount, averagePassengerCount, oilPrice)
-    }
-
-    private fun countFavorable() {
-
-        initDataForBuses()
-        vm.collectArrayForFuelCost()
-
-        getTargetBusType(vm.getTheTypeOfTargetWay(vm.fuelCostArr), binding.txtTheFavorableWay, vm.favorable)
-
-        binding.favorable = vm.favorable
-    }
-
-    private fun countCleanest() {
-
-        initDataForBuses()
-        vm.collectArrayAirPollution()
-
-        getTargetBusType(vm.getTheTypeOfTargetWay(vm.airPollutionVolumeArr), binding.txtCleanestWay, vm.cleanest)
-
-        binding.cleanest = vm.cleanest
     }
 
 

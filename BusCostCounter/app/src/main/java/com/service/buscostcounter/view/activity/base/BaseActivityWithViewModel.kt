@@ -5,7 +5,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProviders
 import com.service.buscostcounter.viewmodel.base.BaseViewModel
 
-open abstract class BaseActivityWithViewModel<T : ViewDataBinding, U : BaseViewModel> : BaseActivity<T>() {
+abstract class BaseActivityWithViewModel<T : ViewDataBinding, U : BaseViewModel> : BaseActivity<T>() {
 
     protected lateinit var vm : U
 
